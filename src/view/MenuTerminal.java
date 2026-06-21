@@ -1,0 +1,1 @@
+// visao do sistema no terminal
