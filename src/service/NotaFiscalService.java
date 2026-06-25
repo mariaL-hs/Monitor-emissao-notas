@@ -47,4 +47,33 @@ public class NotaFiscalService {
         return false;
         }
     }
+
+    public boolean autorizarNota(NotaFiscal nota) {
+
+        if (nota.getStatus() == StatusNota.PENDENTE_AUTORIZACAO) {
+            nota.setStatus(StatusNota.AUTORIZADA);
+            System.out.println("Nota autorizada com sucesso.");
+            return true;
+        }
+
+        else if (nota.getStatus() == StatusNota.AUTORIZADA) {
+            System.out.println("A nota já está autorizada.");
+            return false;
+        }
+
+        else if (nota.getStatus() == StatusNota.CANCELADA) {
+            System.out.println("Não é possível autorizar uma nota cancelada.");
+            return false;
+        }
+
+        else if (nota.getStatus() == StatusNota.INUTILIZADA) {
+            System.out.println("Não é possível autorizar uma nota inutilizada.");
+            return false;
+        }
+
+        else {
+            System.out.println("A nota não pode ser autorizada.");
+            return false;
+        }
+    }
 }
