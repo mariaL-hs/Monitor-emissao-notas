@@ -1,3 +1,4 @@
+package model;
 import java.time.LocalDate;
 
 // objetos que representam os dados do sistema.
