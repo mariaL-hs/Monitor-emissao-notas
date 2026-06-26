@@ -1,9 +1,10 @@
+package repository;
 
-// armazenar e buscar dados 
-// por a lista aqui
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import model.NotaFiscal;
+import model.StatusNota;
 
 public class NotaFiscalRepository {
     private List<NotaFiscal> notas;
@@ -26,8 +27,26 @@ public class NotaFiscalRepository {
                 "Prestação de Serviço",
                 3,
                 900.00,
-                LocalDate.of(2026, 6, 21),
+                LocalDate.of(2026, 4, 21), // fora do prazo de autorização
                 StatusNota.PENDENTE_AUTORIZACAO));
+
+        notas.add(new NotaFiscal(
+            1003,
+            1,
+            "Devolução de Mercadoria",
+            5,
+            450.00,
+            LocalDate.of(2026, 6, 22),
+            StatusNota.REJEICAO_SEFAZ));
+
+        notas.add(new NotaFiscal(
+            1004,
+            1,
+            "Venda de Mercadoria",
+            12,
+            1800.00,
+            LocalDate.of(2026, 6, 25),  // dentro do prazo de 30 dias
+            StatusNota.AUTORIZADA));
     }
 
     public void adicionarNota(NotaFiscal nota) {
@@ -42,4 +61,8 @@ public class NotaFiscalRepository {
         }
         return null;
     }
+
+    public List<NotaFiscal> listarTodas() {
+    return notas;
+}
 }
