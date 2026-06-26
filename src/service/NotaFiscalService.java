@@ -1,25 +1,25 @@
-// regras de negócio
-
 package service;
-import java.time.LocalDate;
-import model.*;
 
-// recebe uma nota fiscal e retorna true/false
+import java.time.LocalDate;
+import model.NotaFiscal;
+import model.StatusNota;
+
 public class NotaFiscalService {
     public boolean inutilizarNota(NotaFiscal nota) {
-    if (nota.getStatus() == StatusNota.REJEICAO_SEFAZ) {
-        nota.setStatus(StatusNota.INUTILIZADA);
-        return true;
-    }
+        if (nota.getStatus() == StatusNota.REJEICAO_SEFAZ) {
+            nota.setStatus(StatusNota.INUTILIZADA);
+            System.out.println("Nota inutilizada com sucesso."); 
+            return true;
+        }
 
-    else if (nota.getStatus() == StatusNota.INUTILIZADA) {
-        System.out.println("A nota já está inutilizada");
-        return false;
-    }
+        else if (nota.getStatus() == StatusNota.INUTILIZADA) {
+            System.out.println("A nota já está inutilizada");
+            return false;
+        }
 
-    else {
-        System.out.println("A nota não está rejeitada pela SEFAZ");
-        return false;
+        else {
+            System.out.println("A nota não está rejeitada pela SEFAZ");
+            return false;
         }
     }
 
@@ -29,28 +29,34 @@ public class NotaFiscalService {
                 .plusDays(30)
                 .isBefore(LocalDate.now())) {
                 System.out.println("Fora do prazo de cancelamento.");
-                return false; 
-                }
+                return false;
+            }
 
             nota.setStatus(StatusNota.CANCELADA);
+            System.out.println("Nota cancelada com sucesso.");  
             return true;
         }
 
         else if (nota.getStatus() == StatusNota.CANCELADA) {
             System.out.println("A nota já está cancelada");
             return false;
-        
         }
-        
+
         else {
-        System.out.println("A nota não está autorizada pela SEFAZ e não pode ser cancelada");
-        return false;
+            System.out.println("A nota não está autorizada pela SEFAZ e não pode ser cancelada");
+            return false;
         }
     }
 
     public boolean autorizarNota(NotaFiscal nota) {
 
         if (nota.getStatus() == StatusNota.PENDENTE_AUTORIZACAO) {
+            nota.setStatus(StatusNota.AUTORIZADA);
+            System.out.println("Nota autorizada com sucesso.");
+            return true;
+        }
+
+        else if (nota.getStatus() == StatusNota.REJEICAO_SEFAZ) {
             nota.setStatus(StatusNota.AUTORIZADA);
             System.out.println("Nota autorizada com sucesso.");
             return true;
