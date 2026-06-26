@@ -1,3 +1,4 @@
+import view.MenuTerminal;
 
 public class Main {
 
@@ -9,5 +10,3 @@ public class Main {
     }
 
 }
-
-//dsadsadasda testando
