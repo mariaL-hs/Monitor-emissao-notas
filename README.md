@@ -79,19 +79,6 @@ Quando uma operação for concluída com sucesso, o sistema:
 
 Caso a operação não possa ser executada, o sistema informa o motivo da rejeição.
 
-## Estrutura do Projeto
-
-```text
-src
-├── Main.java
-├── model
-│   ├── NotaFiscal.java
-│   └── StatusNota.java
-└── service
-    └── NotaFiscalService.java
-... em desenvolvimento
-```
-
 ### model
 
 Contém as classes responsáveis por representar os dados do sistema.
@@ -151,10 +138,8 @@ public static void main(String[] args)
 
 ## Integrantes
 
-| Integrante | Responsabilidade |
-|------------|------------------|
-| Maria Luiza Hames | Modelagem inicial e implementação das funcionalidades de inutilização e cancelamento de nota fiscal |
-| Emilli | Implementação da funcionalidade de autorização de nota fiscal |
-...
+| Integrante | 
+|------------|
+| MARIA LUIZA HAMES, EMILLI SCHIOCHET PEREIRA, LARA BEATRIZ SANTOS ROSARIO, MARIA HELOÍSA DA SILVA DE PAULA E EDUARDA ILHEO DE OLIVEIRA
 
 
